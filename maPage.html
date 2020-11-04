@@ -21,12 +21,118 @@
     <button id="bouton">Cliquez-moi !</button>
 
 <script>
+
+//-------------Partie Ex1------------------
     var h = document.head; // La variable h contient l'objet head du DOM
     console.log(h);
 
     var b = document.body; // La variable b contient l'objet body du DOM
     console.log(b);
 
+    // Accès au premier enfant du noeud body
+console.log(document.body.childNodes[0]);
+// Accès au deuxième enfant du noeud body
+console.log(document.body.childNodes[1]);
+// Accès au deuxième enfant du deuxième enfant du noeud body
+console.log(document.body.childNodes[1].childNodes[1]);
+// Affiche les noeuds enfant du noeud body
+for (var i = 0; i < document.body.childNodes.length; i++) {
+    console.log(document.body.childNodes[i]);
+}
+
+// Sélection d’éléments selon la balise
+var titresElts = document.getElementsByTagName("h2"); // Tous les titres h1
+console.log(titresElts[0]); // Affiche le premier titre h1
+console.log(titresElts.length);
+
+// Sélection d’élément selon leur classe 
+// Tous les éléments ayant la classe "pointsClasse"
+var pointsClasseElts = document.getElementsByClassName("pointsClasse");
+for (var i = 0; i < pointsClasseElts.length; i++) {
+    console.log(pointsClasseElts[i]);
+}
+
+// Sélection d’élément selon leur identifiant	
+// Elément portant l'identifiant "pointsId"
+console.log(document.getElementById("pointsId"));
+
+
+// Le contenu HTML de l'élément identifié par "contenu"
+console.log(document.getElementById("contenu").innerHTML);
+
+// Le contenu textuel de l'élément identifié par "contenu"
+console.log(document.getElementById("contenu").textContent);
+
+// L'attribut href du premier lien
+console.log(document.querySelector("a").getAttribute("href"));
+
+// L'identifiant de la première liste
+console.log(document.querySelector("ul").id);
+
+// L'attribut href du premier lien
+console.log(document.querySelector("a").href);
+
+// Vérifier la présence d’un attribut
+if (document.querySelector("a").hasAttribute("target")) {
+    console.log("Le premier lien possède l'attribut target");
+} else {
+    console.log("Le premier lien ne possède pas l'attribut target");
+}
+
+// Modification du contenu HTML de la liste : ajout d'un point
+document.getElementById("pointsId").innerHTML += '<li id="point">Point4</li>';
+
+// Suppression du contenu HTML de la liste
+document.getElementById("pointsId").innerHTML = "";
+
+// Modification du contenu textuel du premier titre
+document.querySelector("h1").textContent += " à moi !";
+
+// Définition de l'attribut "id" du premier titre
+document.querySelector("h1").setAttribute("id", "titre");
+
+// Ajout d’un nouvel élément 
+var pt5Elt = document.createElement("li"); // Création d'un élément li
+pt5Elt.id = "point5"; // Définition de son identifiant
+pt5Elt.textContent = "Point 5"; // Définition de son contenu textuel
+document.getElementById("pointsId").appendChild(pt5Elt); // Insertion du nouvel élément
+
+// Ajout d’un nœud avant un autre nœud
+var pt4Elt = document.createElement("li"); // Création d'un élément li
+pt4Elt.id = "point4"; // Définition de son identifiant
+pt4Elt.textContent = "Point 4"; // Définition de son contenu textuel
+// Ajout du nouvel élément avant l'identifiant identifié par "point5"
+document.getElementById("pointsId").insertBefore(pt4Elt,document.getElementById("point5"));
+
+// Ajout d'un élément au tout début de la liste
+document.getElementById('pointsId').insertAdjacentHTML("afterBegin", 
+    '<li id="point0">Point 0</li>');
+// Autres possibilités :
+//    afterbegin: juste à l'intérieur de l'élément existant, avant son premier enfant.
+//    beforeend: juste à l'intérieur de l'élément existant, après son dernier enfant.
+//    afterend: après l'élément existant lui-même.
+
+// Remplacer un nœud
+var pt6Elt = document.createElement("li"); // Création d'un élément li
+pt6Elt.id = "point6"; // Définition de son identifiant
+pt6Elt.textContent = "Point 6"; // Définition de son contenu textuel
+// Remplacement de l'élément identifié par "point5" par le nouvel élément
+document.getElementById("pointsId").replaceChild(pt6Elt, document.getElementById("point5"));
+
+// Supprimer un noeud
+// Suppression de l'élément identifié par "point6"
+document.getElementById("PointsId").removeChild(document.getElementById("point6"));
+
+//Modifier le style d’un élément
+var pElt = document.querySelector("p");
+pElt.style.color = "red";
+pElt.style.margin = "50px";
+pElt.style.fontFamily = "Arial";
+pElt.style.backgroundColor = "black";
+
+
+
+//---------Partie Ex2------------------------
     //Ajout d’un gestionnaire d’événement	
 var boutonElt = document.getElementById("bouton");
 // Ajout d'un gestionnaire pour l'événement click
